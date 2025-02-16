@@ -610,4 +610,4 @@ def query():
 
 port = int(os.environ.get("PORT", 5000))
 if __name__ == '__main__':
-    app.run(port=port, debug=True)
+    app.run('0.0.0.0',port=port, debug=True)
