@@ -608,6 +608,7 @@ def query():
     return jsonify({"response": response})
 
 
-port = int(os.environ.get("PORT", 5000))
+
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=port, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run('0.0.0.0',port=port)
