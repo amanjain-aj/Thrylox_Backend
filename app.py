@@ -595,7 +595,7 @@ def query():
     user_question = data.get("message", "")
     if not user_question:
         return jsonify({"error": "Question is required"}), 400
-    
+
     # if not vector_store:
     #     return jsonify({"error": "No knowledge base found. Please scrape a website or upload PDFs."}), 400
 
@@ -609,3 +609,6 @@ def query():
 
 
 
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run('0.0.0.0',port=port)
