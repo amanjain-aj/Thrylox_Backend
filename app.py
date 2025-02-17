@@ -69,7 +69,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 
 def process_pdfs(folder_path, chunking_strategy="by_title", extract_images_in_pdf=True, 
-                 max_characters=3000, new_after_n_chars=2800, combine_text_under_n_chars=2000, 
+                 max_characters=4000, new_after_n_chars=2800, combine_text_under_n_chars=2000, 
                  image_output_dir_path="img_path"):
     pdf_elements = {}
     pdf_folder = Path(folder_path)
@@ -84,7 +84,7 @@ def process_pdfs(folder_path, chunking_strategy="by_title", extract_images_in_pd
             combine_text_under_n_chars=combine_text_under_n_chars,
             image_output_dir_path=image_output_dir_path
         )
-    
+    print("PDF elements extracted successfully", pdf_elements)
     return pdf_elements
 
 # Example usage
@@ -167,7 +167,8 @@ def encode_image(image_path):
 
 def image_summarize(img_base64, prompt):
     """Make image summary"""
-    chat = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.5,max_tokens=1024)
+
+    chat = ChatGoogleGenerativeAI(model="gemini-pro-vision", temperature=0.5,max_tokens=1024)
 
     msg = chat.invoke(
         [
